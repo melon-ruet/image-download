@@ -11,6 +11,7 @@ class DownloadTest(TestCase):
         test_image_file = 'images.txt'
         self.assertEqual(os.path.exists(test_image_file), True, 'Test image file not found')
         download_images(test_image_file)
+        self.assertEqual(os.path.exists(download_dir), True, 'Download dir not found')
         with open(test_image_file) as file:
             count = len(file.readline())
         self.assertEqual(os.listdir(download_dir), count, 'All files download failed')
