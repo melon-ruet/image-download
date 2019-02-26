@@ -13,6 +13,6 @@ class DownloadTest(TestCase):
         download_images(test_image_file)
         self.assertEqual(os.path.exists(download_dir), True, 'Download dir not found')
         with open(test_image_file) as file:
-            count = len(file.readline())
-        self.assertEqual(os.listdir(download_dir), count, 'All files download failed')
+            count = len(file.readlines())
+        self.assertEqual(len(os.listdir(download_dir)), count, 'All files download failed')
         shutil.rmtree(download_dir)
